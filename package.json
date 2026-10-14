@@ -1,0 +1,80 @@
+{
+  "name": "brasa",
+  "productName": "Brasa",
+  "version": "1.0.0",
+  "description": "Local desktop music player with equalizer, crossfade, playlists and synced lyrics.",
+  "main": "main.js",
+  "author": "Dani",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win",
+    "dist:mac": "electron-builder --mac",
+    "dist:linux": "electron-builder --linux"
+  },
+  "dependencies": {
+    "ffmpeg-static": "5.3.0",
+    "music-metadata": "11.15.0"
+  },
+  "devDependencies": {
+    "electron": "44.4.5",
+    "electron-builder": "26.16.1"
+  },
+  "build": {
+    "appId": "es.brasa.player",
+    "productName": "Brasa",
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**",
+      "build/icon.png",
+      "build/icon.ico"
+    ],
+    "asarUnpack": [
+      "node_modules/ffmpeg-static/**"
+    ],
+    "fileAssociations": [
+      {
+        "ext": [
+          "mp3",
+          "flac",
+          "m4a",
+          "ogg",
+          "opus",
+          "wav",
+          "aiff",
+          "wma",
+          "ape",
+          "wv",
+          "dsf"
+        ],
+        "name": "Audio",
+        "role": "Viewer"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "shortcutName": "Brasa",
+      "artifactName": "Brasa-Setup-${version}.exe"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "build/icon.png",
+      "category": "public.app-category.music"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "build/icon.png",
+      "category": "Audio"
+    },
+    "publish": null
+  }
+}

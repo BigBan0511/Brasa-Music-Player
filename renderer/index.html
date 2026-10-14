@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; connect-src 'self'">
+<title>Brasa</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-now" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2.4"/><path d="M7.4 9.2a5.4 5.4 0 0 1 1.9-1.9"/></symbol>
+  <symbol id="i-lib" viewBox="0 0 24 24"><path d="M5 4.5v15M9.5 4.5v15"/><path d="M13.6 5.4l3.2-.9 3.6 14.6-3.2.9z"/></symbol>
+  <symbol id="i-pl" viewBox="0 0 24 24"><path d="M4 6.5h11M4 11.5h11M4 16.5h6"/><path d="M16.5 19.5v-7.8l4-1.2"/><circle cx="14.6" cy="19.4" r="1.9"/></symbol>
+  <symbol id="i-eq" viewBox="0 0 24 24"><path d="M6 4v16M12 4v16M18 4v16"/><circle class="f" cx="6" cy="14.5" r="2.3"/><circle class="f" cx="12" cy="8" r="2.3"/><circle class="f" cx="18" cy="12.5" r="2.3"/></symbol>
+  <symbol id="i-set" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h11M19 17h1"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="17" r="2"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path class="f" d="M8 5.2v13.6c0 .8.9 1.3 1.5.8l10-6.8c.6-.4.6-1.2 0-1.6l-10-6.8C8.9 4 8 4.4 8 5.2z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><rect class="f" x="6.5" y="5" width="4" height="14" rx="1.2"/><rect class="f" x="13.5" y="5" width="4" height="14" rx="1.2"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 24 24"><path d="M6.5 6v12"/><path class="f" d="M18.5 6.6v10.8c0 .8-.9 1.2-1.5.8l-7.6-5.4a1 1 0 0 1 0-1.6L17 5.8c.6-.4 1.5 0 1.5.8z"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M17.5 6v12"/><path class="f" d="M5.5 6.6v10.8c0 .8.9 1.2 1.5.8l7.6-5.4a1 1 0 0 0 0-1.6L7 5.8c-.6-.4-1.5 0-1.5.8z"/></symbol>
+  <symbol id="i-shuffle" viewBox="0 0 24 24"><path d="M3.5 7h3.6c2 0 3.2 1 4.3 2.8l1.2 2.4c1 1.8 2.3 2.8 4.3 2.8h3.6M3.5 17h3.6c1.2 0 2.1-.4 2.9-1.2M13.6 8.2c.8-.8 1.7-1.2 2.9-1.2h3.6M17.6 4.6 20 7l-2.4 2.4M17.6 12.6 20 15l-2.4 2.4"/></symbol>
+  <symbol id="i-repeat" viewBox="0 0 24 24"><path d="M4.5 11V9.5A2.5 2.5 0 0 1 7 7h12.5M17 4.5 19.5 7 17 9.5M19.5 13v1.5A2.5 2.5 0 0 1 17 17H4.5M7 19.5 4.5 17 7 14.5"/></symbol>
+  <symbol id="i-vol" viewBox="0 0 24 24"><path d="M4 9.5h3l4.5-4v13L7 14.5H4z"/><path d="M15.2 9.2a4 4 0 0 1 0 5.6M17.8 6.6a7.6 7.6 0 0 1 0 10.8"/></symbol>
+  <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9.5h3l4.5-4v13L7 14.5H4z"/><path d="M15.5 9.5l5 5M20.5 9.5l-5 5"/></symbol>
+  <symbol id="i-note" viewBox="0 0 24 24"><path d="M9 17.5V6.2l10-2v11.3"/><circle cx="6.6" cy="17.5" r="2.4"/><circle cx="16.6" cy="15.5" r="2.4"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3.5 7.5A1.5 1.5 0 0 1 5 6h4.2l2 2.2H19a1.5 1.5 0 0 1 1.5 1.5v7.8A1.5 1.5 0 0 1 19 19H5a1.5 1.5 0 0 1-1.5-1.5z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><circle class="f" cx="5.5" cy="12" r="1.7"/><circle class="f" cx="12" cy="12" r="1.7"/><circle class="f" cx="18.5" cy="12" r="1.7"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M6 9.5l6 6 6-6"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></symbol>
+  <symbol id="i-grip" viewBox="0 0 24 24"><circle class="f" cx="9" cy="7" r="1.4"/><circle class="f" cx="15" cy="7" r="1.4"/><circle class="f" cx="9" cy="12" r="1.4"/><circle class="f" cx="15" cy="12" r="1.4"/><circle class="f" cx="9" cy="17" r="1.4"/><circle class="f" cx="15" cy="17" r="1.4"/></symbol>
+  <symbol id="i-lyrics" viewBox="0 0 24 24"><path d="M4.5 6.5h15M4.5 11h10M4.5 15.5h12M4.5 20h7"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3M19.5 4.5v4h-4"/></symbol>
+  <symbol id="i-import" viewBox="0 0 24 24"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/></symbol>
+  <symbol id="i-spin" viewBox="0 0 24 24"><path d="M12 4a8 8 0 1 0 8 8"/></symbol>
+</svg>
+
+<!-- portada difuminada de fondo -->
+<div class="backdrop" aria-hidden="true">
+  <div class="bd-layer" id="bdA"></div>
+  <div class="bd-layer" id="bdB"></div>
+  <div class="bd-veil"></div>
+</div>
+
+<div class="app">
+  <nav class="rail" aria-label="Secciones">
+    <button class="nav-btn" data-view="now" aria-current="page"><svg class="ico"><use href="#i-now"/></svg>Ahora</button>
+    <button class="nav-btn" data-view="library"><svg class="ico"><use href="#i-lib"/></svg>Biblioteca</button>
+    <button class="nav-btn" data-view="playlists"><svg class="ico"><use href="#i-pl"/></svg>Playlists</button>
+    <button class="nav-btn" data-view="eq"><svg class="ico"><use href="#i-eq"/></svg>Ecualizador</button>
+    <button class="nav-btn" data-view="settings"><svg class="ico"><use href="#i-set"/></svg>Ajustes</button>
+  </nav>
+
+  <main id="main">
+    <header class="top">
+      <div class="logo">Brasa</div>
+      <div class="top-right">
+        <span class="pill-sm" id="scanPill" hidden><svg class="ico spin"><use href="#i-spin"/></svg><span id="scanText">Leyendo biblioteca</span></span>
+        <button class="pill-sm" id="eqPill" title="Abrir el ecualizador"><span class="dot" id="eqDot"></span><span id="eqPillText">EQ · Plano</span></button>
+      </div>
+    </header>
+
+    <!-- AHORA -->
+    <section class="view now" id="view-now" aria-label="Reproduciendo ahora">
+      <p class="greet" id="greet">&nbsp;</p>
+      <div class="dial" id="dial" role="slider" tabindex="0" aria-label="Posición en la canción" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" aria-valuetext="0:00">
+        <canvas id="viz" aria-hidden="true"></canvas>
+        <svg class="ring" viewBox="0 0 240 240" aria-hidden="true">
+          <defs>
+            <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" style="stop-color:var(--accent-1)"/>
+              <stop offset="1" style="stop-color:var(--accent-2)"/>
+            </linearGradient>
+          </defs>
+          <circle class="ring-track" cx="120" cy="120" r="100"/>
+          <circle class="ring-prog" id="ringProg" cx="120" cy="120" r="100" stroke-dasharray="628.32" stroke-dashoffset="628.32"/>
+          <circle class="ring-knob" id="ringKnob" cx="120" cy="20" r="8"/>
+        </svg>
+        <button class="dial-center" id="dialCenter" title="Cambiar entre tiempo restante y transcurrido">
+          <span class="big" id="bigTime">0:00</span>
+          <span class="sub" id="subTime">Añade música para empezar</span>
+        </button>
+      </div>
+
+      <button class="card track-pill" id="trackPill" title="Ver la canción con su letra">
+        <span class="art" id="pillArt"></span>
+        <span class="tp-text"><b id="pillTitle">Sin canciones</b><small id="pillArtist">Añade una carpeta de música</small></span>
+        <svg class="ico tp-go" aria-hidden="true"><use href="#i-lyrics"/></svg>
+      </button>
+
+      <div class="transport" data-transport>
+        <button class="icon-btn sm" data-act="shuffle" aria-pressed="false" aria-label="Orden aleatorio"><svg class="ico"><use href="#i-shuffle"/></svg></button>
+        <button class="icon-btn" data-act="prev" aria-label="Canción anterior"><svg class="ico"><use href="#i-prev"/></svg></button>
+        <button class="play-btn" data-act="play"><svg class="ico"><use href="#i-play"/></svg><span>Reproducir</span></button>
+        <button class="icon-btn" data-act="next" aria-label="Canción siguiente"><svg class="ico"><use href="#i-next"/></svg></button>
+        <button class="icon-btn sm" data-act="repeat" aria-pressed="true" aria-label="Repetir"><svg class="ico"><use href="#i-repeat"/></svg><span class="badge"></span></button>
+      </div>
+
+      <div class="volume">
+        <button class="icon-btn sm" id="muteBtn" aria-label="Silenciar"><svg class="ico"><use id="volUse" href="#i-vol"/></svg></button>
+        <input type="range" id="vol" min="0" max="1" step="0.01" aria-label="Volumen">
+        <output id="volOut" for="vol">80</output>
+      </div>
+
+      <div class="cards">
+        <button class="card stat up-next" id="upNext" title="Ver la lista que suena">
+          <span class="art" id="nextArt"></span>
+          <span class="un-text"><span class="stat-l">A continuación</span><b id="nextTitle">—</b><small id="nextArtist"></small></span>
+        </button>
+        <div class="card stat"><div class="stat-v" id="posStat">0 de 0</div><div class="stat-l" id="ctxName">Biblioteca</div></div>
+      </div>
+      <p class="foot" id="foot"></p>
+    </section>
+
+    <!-- BIBLIOTECA -->
+    <section class="view" id="view-library" hidden aria-label="Biblioteca">
+      <div class="view-head">
+        <div class="vh-text"><h1>Biblioteca</h1><p id="libMeta">Sin canciones</p></div>
+        <div class="actions">
+          <button class="btn primary" id="libPlay"><svg class="ico"><use href="#i-play"/></svg>Reproducir</button>
+          <button class="btn" id="libShuffle"><svg class="ico"><use href="#i-shuffle"/></svg>Aleatorio</button>
+          <button class="btn" id="addFolder"><svg class="ico"><use href="#i-folder"/></svg>Añadir carpeta</button>
+          <button class="btn icon-only" id="addFilesBtn" aria-label="Añadir archivos sueltos" title="Añadir archivos sueltos"><svg class="ico"><use href="#i-plus"/></svg></button>
+        </div>
+      </div>
+      <div class="list-tools">
+        <label class="search"><svg class="ico"><use href="#i-search"/></svg><input type="search" id="search" placeholder="Buscar por título, artista o álbum" aria-label="Buscar en la biblioteca"></label>
+        <div class="seg" role="group" aria-label="Ordenar por" id="sortSeg">
+          <button data-sort="artist">Artista</button><button data-sort="album">Álbum</button><button data-sort="title">Título</button><button data-sort="added">Recientes</button>
+        </div>
+      </div>
+      <div class="card list-card"><div class="vlist" id="libList"></div></div>
+    </section>
+
+    <!-- PLAYLISTS -->
+    <section class="view" id="view-playlists" hidden aria-label="Playlists">
+      <div class="view-head">
+        <div class="vh-text"><h1>Playlists</h1><p id="plMeta">Agrupa canciones para cada momento.</p></div>
+        <div class="actions">
+          <button class="btn primary" id="newPl"><svg class="ico"><use href="#i-plus"/></svg>Nueva playlist</button>
+          <button class="btn" id="importPl"><svg class="ico"><use href="#i-import"/></svg>Importar M3U</button>
+        </div>
+      </div>
+      <div class="pl-grid" id="plGrid"></div>
+    </section>
+
+    <!-- DETALLE DE PLAYLIST -->
+    <section class="view" id="view-playlist" hidden aria-label="Playlist">
+      <button class="btn ghost back" id="plBack"><svg class="ico"><use href="#i-back"/></svg>Playlists</button>
+      <div class="pl-hero">
+        <div class="mosaic big" id="plMosaic"></div>
+        <div class="pl-hero-text">
+          <span class="eyebrow">Playlist</span>
+          <h1 id="plName">—</h1>
+          <p id="plInfo"></p>
+          <div class="actions">
+            <button class="btn primary" id="plPlay"><svg class="ico"><use href="#i-play"/></svg>Reproducir</button>
+            <button class="btn" id="plShuffle"><svg class="ico"><use href="#i-shuffle"/></svg>Aleatorio</button>
+            <button class="btn icon-only" id="plMore" aria-label="Más opciones de la playlist"><svg class="ico"><use href="#i-more"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <div class="card list-card"><div class="vlist" id="plList"></div></div>
+    </section>
+
+    <!-- ECUALIZADOR -->
+    <section class="view" id="view-eq" hidden aria-label="Ecualizador">
+      <div class="view-head">
+        <div class="vh-text"><h1>Ecualizador</h1><p>Diez bandas de ±12 dB. Arrastra cada control; doble clic lo devuelve a 0.</p></div>
+        <button class="switch" id="eqOn" role="switch" aria-checked="true"><span class="knob"></span><span id="eqOnLabel">Activo</span></button>
+      </div>
+      <div class="card eq-card" id="eqCard">
+        <div class="bands" id="bands"><canvas id="eqCurve" aria-hidden="true"></canvas></div>
+      </div>
+      <div class="eq-below">
+        <div class="presets" id="presets" role="group" aria-label="Preajustes"></div>
+        <button class="btn ghost" id="eqReset">Restablecer</button>
+      </div>
+      <div class="card preamp">
+        <label for="preamp">Preamplificador</label>
+        <input type="range" id="preamp" min="-12" max="6" step="0.5">
+        <output id="preampOut" for="preamp">0 dB</output>
+      </div>
+    </section>
+
+    <!-- AJUSTES -->
+    <section class="view" id="view-settings" hidden aria-label="Ajustes">
+      <div class="view-head"><div class="vh-text"><h1>Ajustes</h1><p>Biblioteca, transiciones, sonido y apariencia.</p></div></div>
+      <div class="settings">
+        <div class="card group">
+          <h2>Carpetas de música</h2>
+          <ul class="folders" id="folders"></ul>
+          <div class="set">
+            <div class="set-text"><b>Buscar cambios</b><small>Brasa revisa estas carpetas al abrirse. Hazlo ahora si acabas de copiar música.</small></div>
+            <div class="actions"><button class="btn" id="rescanBtn"><svg class="ico"><use href="#i-refresh"/></svg>Volver a escanear</button><button class="btn" id="addFolder2"><svg class="ico"><use href="#i-folder"/></svg>Añadir carpeta</button></div>
+          </div>
+        </div>
+        <div class="card group">
+          <h2>Transiciones</h2>
+          <div class="set">
+            <div class="set-text"><label for="sFadeIn">Fundido de entrada</label><small>Cuando una canción empieza desde silencio.</small></div>
+            <div class="set-ctl"><input type="range" id="sFadeIn" min="0" max="5" step="0.1"><output id="oFadeIn"></output></div>
+          </div>
+          <div class="set">
+            <div class="set-text"><label for="sPause">Fundido al pausar y reanudar</label><small>Evita el corte seco al pulsar Pausa.</small></div>
+            <div class="set-ctl"><input type="range" id="sPause" min="0" max="2" step="0.1"><output id="oPause"></output></div>
+          </div>
+          <div class="set">
+            <div class="set-text"><label for="sCross">Fundido cruzado entre canciones</label><small>La siguiente entra mientras la actual se apaga. En 0, las canciones se encadenan sin silencio.</small></div>
+            <div class="set-ctl"><input type="range" id="sCross" min="0" max="12" step="0.5"><output id="oCross"></output></div>
+          </div>
+          <div class="set">
+            <div class="set-text"><b>Curva del fundido</b><small>Suave mantiene la sensación de volumen constante durante el cruce.</small></div>
+            <div class="seg" role="group" aria-label="Curva del fundido"><button data-curve="power">Suave</button><button data-curve="linear">Lineal</button></div>
+          </div>
+        </div>
+        <div class="card group">
+          <h2>Sonido</h2>
+          <div class="set">
+            <div class="set-text"><b>Nivelar volumen entre canciones</b><small>Usa ReplayGain si el archivo lo trae; si no, mide la sonoridad (EBU R128) la primera vez que suena.</small></div>
+            <button class="switch" data-setting="level" role="switch" aria-checked="true" aria-label="Nivelar volumen"><span class="knob"></span></button>
+          </div>
+          <div class="set">
+            <div class="set-text"><b>Limitador</b><small>Impide que el sonido sature al subir bandas del ecualizador.</small></div>
+            <button class="switch" data-setting="limiter" role="switch" aria-checked="true" aria-label="Limitador"><span class="knob"></span></button>
+          </div>
+          <div class="set">
+            <div class="set-text"><b>Espectro alrededor del anillo</b><small>Muestra las frecuencias que suenan en la vista Ahora.</small></div>
+            <button class="switch" data-setting="viz" role="switch" aria-checked="true" aria-label="Espectro"><span class="knob"></span></button>
+          </div>
+        </div>
+        <div class="card group">
+          <h2>Apariencia</h2>
+          <div class="set">
+            <div class="set-text"><b>Tema</b><small>Sistema sigue el modo claro u oscuro de tu ordenador.</small></div>
+            <div class="seg" role="group" aria-label="Tema"><button data-theme-src="system">Sistema</button><button data-theme-src="light">Claro</button><button data-theme-src="dark">Oscuro</button></div>
+          </div>
+          <div class="set">
+            <div class="set-text"><b>Colores de la carátula</b><small>La interfaz toma el color dominante de la canción que suena.</small></div>
+            <button class="switch" data-setting="adaptive" role="switch" aria-checked="true" aria-label="Colores de la carátula"><span class="knob"></span></button>
+          </div>
+          <div class="set">
+            <div class="set-text"><b>Carátula de fondo</b><small>Muestra la portada difuminada detrás de toda la interfaz.</small></div>
+            <button class="switch" data-setting="backdrop" role="switch" aria-checked="true" aria-label="Carátula de fondo"><span class="knob"></span></button>
+          </div>
+        </div>
+        <div class="card group">
+          <h2>Letras</h2>
+          <div class="set">
+            <div class="set-text"><b>Buscar letras en internet</b><small>Si la canción no trae letra ni tiene un .lrc al lado, se pide a LRCLIB enviando título, artista, álbum y duración. Las letras encontradas se guardan para no repetir la búsqueda.</small></div>
+            <button class="switch" data-setting="onlineLyrics" role="switch" aria-checked="true" aria-label="Buscar letras en internet"><span class="knob"></span></button>
+          </div>
+        </div>
+        <div class="card group">
+          <h2>Formatos</h2>
+          <div class="set">
+            <div class="set-text"><b id="ffStatus">FFmpeg</b><small>MP3, AAC, FLAC, OGG, Opus y WAV suenan directamente. WMA, APE, ALAC, AIFF, WavPack, DSD, AC-3 y el resto se convierten a FLAC sin pérdida la primera vez que suenan.</small></div>
+          </div>
+          <div class="set">
+            <div class="set-text"><b>Conversiones guardadas</b><small id="cacheText">Calculando…</small></div>
+            <button class="btn" id="clearCache">Vaciar</button>
+          </div>
+        </div>
+        <div class="card group">
+          <h2>Atajos de teclado</h2>
+          <div class="keys">
+            <div><kbd>Espacio</kbd> Reproducir o pausar</div>
+            <div><kbd>←</kbd><kbd>→</kbd> Retroceder o avanzar 5 s</div>
+            <div><kbd>N</kbd> Siguiente canción</div>
+            <div><kbd>P</kbd> Canción anterior</div>
+            <div><kbd>↑</kbd><kbd>↓</kbd> Volumen</div>
+            <div><kbd>M</kbd> Silenciar</div>
+            <div><kbd>L</kbd> Abrir la letra</div>
+            <div><kbd>S</kbd> Orden aleatorio</div>
+            <div><kbd>R</kbd> Modo de repetición</div>
+            <div><kbd>Ctrl</kbd><kbd>F</kbd> Buscar en la biblioteca</div>
+          </div>
+        </div>
+      </div>
+      <p class="note">Tu música no sale de este ordenador. Solo se consulta internet para buscar letras, y puedes desactivarlo arriba.</p>
+    </section>
+
+    <div class="card mini" id="mini" hidden>
+      <button class="mini-open" id="miniOpen" title="Ver la canción con su letra">
+        <span class="art" id="miniArt"></span>
+        <span class="tp-text"><b id="miniTitle">—</b><small id="miniArtist"></small></span>
+      </button>
+      <div class="mini-ctl" data-transport>
+        <button class="icon-btn sm" data-act="prev" aria-label="Canción anterior"><svg class="ico"><use href="#i-prev"/></svg></button>
+        <button class="play-btn round" data-act="play"><svg class="ico"><use href="#i-play"/></svg><span></span></button>
+        <button class="icon-btn sm" data-act="next" aria-label="Canción siguiente"><svg class="ico"><use href="#i-next"/></svg></button>
+      </div>
+      <span class="mini-bar" id="miniBar"></span>
+    </div>
+  </main>
+</div>
+
+<!-- VISTA A PANTALLA COMPLETA CON LETRA -->
+<section class="np" id="np" hidden tabindex="-1" aria-label="Canción actual y letra">
+  <div class="np-bg" aria-hidden="true"><div class="np-cover-bg" id="npBg"></div><div class="np-veil"></div></div>
+  <header class="np-top">
+    <button class="icon-btn" id="npClose" aria-label="Cerrar (Esc)" title="Cerrar (Esc)"><svg class="ico"><use href="#i-down"/></svg></button>
+    <span class="np-ctx" id="npCtx"></span>
+  </header>
+  <div class="np-body">
+    <div class="np-head">
+      <div class="np-cover" id="npCover"></div>
+      <div class="np-info">
+        <h1 class="np-title" id="npTitle">—</h1>
+        <p class="np-artist" id="npArtist"></p>
+        <p class="np-tech" id="npTech"></p>
+        <div class="np-progress">
+          <span id="npPos">0:00</span>
+          <input type="range" id="npSeek" min="0" max="1" step="0.001" value="0" aria-label="Posición en la canción">
+          <span id="npDur">0:00</span>
+        </div>
+        <div class="transport" data-transport>
+          <button class="icon-btn sm" data-act="shuffle" aria-pressed="false" aria-label="Orden aleatorio"><svg class="ico"><use href="#i-shuffle"/></svg></button>
+          <button class="icon-btn" data-act="prev" aria-label="Canción anterior"><svg class="ico"><use href="#i-prev"/></svg></button>
+          <button class="play-btn" data-act="play"><svg class="ico"><use href="#i-play"/></svg><span>Reproducir</span></button>
+          <button class="icon-btn" data-act="next" aria-label="Canción siguiente"><svg class="ico"><use href="#i-next"/></svg></button>
+          <button class="icon-btn sm" data-act="repeat" aria-pressed="true" aria-label="Repetir"><svg class="ico"><use href="#i-repeat"/></svg><span class="badge"></span></button>
+        </div>
+      </div>
+    </div>
+    <div class="np-lyrics" id="npLyrics" tabindex="-1"></div>
+    <p class="np-source" id="npSource"></p>
+  </div>
+</section>
+
+<div class="menu" id="menu" role="menu" hidden></div>
+<div class="sheet-wrap" id="sheet" hidden>
+  <form class="card sheet" id="sheetForm">
+    <h2 id="sheetTitle"></h2>
+    <p id="sheetText"></p>
+    <input type="text" id="sheetInput" maxlength="80" autocomplete="off" aria-labelledby="sheetTitle">
+    <div class="actions"><button type="button" class="btn ghost" id="sheetCancel">Cancelar</button><button type="submit" class="btn primary" id="sheetOk">Aceptar</button></div>
+  </form>
+</div>
+<div class="drop-overlay" id="drop" hidden>Suelta tu música aquí</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<span class="probe" id="probe" aria-hidden="true"></span>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
